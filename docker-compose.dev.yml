@@ -1,0 +1,27 @@
+version: '3'
+services:
+  api:
+    container_name: chat-api-container
+    build:
+      context: .
+      target: development
+    ports:
+      - "3200:3000"
+    depends_on:
+      - postgresql
+    command: nest start --watch
+    
+  postgresql: 
+    container_name: pgdb
+    image: postgres
+    restart: always
+    volumes:
+      - pgvolume:/my/own/datadir
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgvolume:
