@@ -11,10 +11,10 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 3000
-CMD ["nest", "start", "--watch"]
+CMD ["node", "dist/main.js"]
 
 # PRODUCTION IMAGE
-FROM node:18 AS production
+FROM base AS production
 
 WORKDIR /app
 COPY package*.json .
