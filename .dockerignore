@@ -1,0 +1,6 @@
+node_modules
+test
+*.spec.ts
+dist
+Dockerfile
+docker-compose*
